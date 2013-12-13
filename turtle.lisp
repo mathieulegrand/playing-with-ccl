@@ -32,7 +32,7 @@
                    :backing #$NSBackingStoreBuffered
                    :defer t)))
       (#/setTitle: w #@"The turtle")
-      (let ((my-view (make-instance 'demo-view :with-frame r)))
+      (let ((my-view (make-instance 'turtle-view :with-frame r)))
         (#/setContentView: w my-view)
         (#/setDelegate: w my-view))
       (#/performSelectorOnMainThread:withObject:waitUntilDone:
@@ -101,8 +101,8 @@
 (defparameter turtle-draw t)
 
 (defun reset ()
-  (setf turtle-x (car (width-height)))
-  (setf turtle-y (cadr (width-height)))
+  (setf turtle-x (/ (car (width-height)) 2))
+  (setf turtle-y (/ (cadr (width-height)) 2))
   (setf turtle-theta 0)
   (setf turtle-draw t))
 
